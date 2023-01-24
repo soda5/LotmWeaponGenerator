@@ -12,13 +12,16 @@ public class Downsides {
     private static List<Downside> downsidesCatastrophe = new ArrayList<>();
 
     public static void createDownsides() {
+        /*Trivial:*/
         Downside downsideTrivialOne = new Downside(0, "Du hast ein verstärktes Durstgefühl.", null);
         downsidesTrivial.add(downsideTrivialOne);
         Downside downsideTrivialTwo = new Downside(0, "Du denkst jede Person des anderen Geschlechtes ist an dir interessiert.", null);
         downsidesTrivial.add(downsideTrivialTwo);
-        Downside downsideTrivialThree = new Downside(0, "Dein Gesicht sieht lächerlich aus.", null);
+        Downside downsideTrivialThree = new Downside(0, "Dein Gesicht sieht lächerlich aus.",
+                "NPCs müssen sich zusammenreißen um dich nicht auszulachen.");
         downsidesTrivial.add(downsideTrivialThree);
 
+        /*Leicht:*/
         Downside downsideEasyOne = new Downside(1, "Du fühlst dich als hättest du Stundenland einem langweiligen" +
                 "Theaterstück zugesehen. Du bist erschöpft und schlecht gelaunt.", "Endurance -1, Wahrnehmung -1, Charme -1");
         downsidesEasy.add(downsideEasyOne);
@@ -28,18 +31,34 @@ public class Downsides {
         Downside downsideEasyThree = new Downside(1, "Vergiftet deinen Körper langsam wenn Hautkontakt.",
                 "-2 HP pro Runde im Gefecht oder -1 HP pro Stunde außerhalb des Gefechtes.");
         downsidesEasy.add(downsideEasyThree);
+        Downside downsideEasyFour = new Downside(1, "Du kannst Gesichter nicht mehr auseinanderhalten.",
+                "Du weißt nicht mit wem du sprichst sofern die Person nicht offensichtliche Merkmale außerhalb des Gesichts hat.");
+        downsidesEasy.add(downsideEasyFour);
+        Downside downsideEasyFive = new Downside(1, "Das Benutzen des Items versetzt dich in einen Zustand wie nach einem sehr harten Workout.",
+                "-3 Stärke nachdem du es benutzt für den Tag, nachdem du den Effekt an 14 aufeinanderfolgenden Tagen benutzt, erhöht sich deine Stärke" +
+                        "dauerhaft um 1 (Effekt kann pro Person nur einmal erhalten werden.)");
+        downsidesEasy.add(downsideEasyFive);
 
+        /*Mittel:*/
         Downside downsideMiddleOne = new Downside(2, "Du kannst weder riechen noch schmecken noch hören.",
                 "-10 Wahrnehmung und Probleme wenn du deine Sinne nutzen willst.");
         downsidesMiddle.add(downsideMiddleOne);
+        Downside downsideMiddleTwo = new Downside(2, "Du fängst an extrem nach Verwesung zu stinken.",
+                "-10 Charm, -10 Überzeugen, +5 Einschüchtern.");
+        downsidesMiddle.add(downsideMiddleTwo);
 
+        /*Schwer:*/
         Downside downsideHardOne = new Downside(3, "Dein Körper wird alt und gebrechlich, so wird kämpfen schwer.",
                 "Deine Max HP reduzieren sich auf 50%.");
         downsidesHard.add(downsideHardOne);
 
+        /*Catastrophe:*/
         Downside downsideCatastropheOne = new Downside(4, "Bei jeder Benutzung verkaufst du ein Stück deiner Seele.",
-                "Für jedes Mal benutzen dieses Items musst du permanent einen deiner 4 Mainstats um 1 veringern.");
+                "Für jedes Mal benutzen dieses Items musst du permanent einen beliebigen deiner 4 Mainstats um 1 veringern.");
         downsidesCatastrophe.add(downsideCatastropheOne);
+        Downside downsideCatastropheTwo = new Downside(4, "Du musst den großteil deiner aktuellen Lebensenergie opfern.",
+                "Verringere deine aktuellen HP um 80% für jeden Use.");
+        downsidesCatastrophe.add(downsideCatastropheTwo);
     }
 
     public static List<Downside> decideDownsides(int downsightWeight) {
@@ -53,7 +72,7 @@ public class Downsides {
 
         while (downsightWeight > 0) {
             int biggestPossibleWeight = getBiggestDownside(downsightWeight);
-            int decider = random.nextInt(2);
+            int decider = random.nextInt(3);
 
             if (decider == 0) {
                 if (biggestPossibleWeight == 5) {
@@ -72,7 +91,7 @@ public class Downsides {
                     downsides.add(getRandomDownsideByLevel(0));
                     downsightWeight -= biggestPossibleWeight;
                 }
-            } else {
+            } else if (decider == 1) {
                 if (biggestPossibleWeight == 5) {
                     downsides.add(getRandomDownsideByLevel(3));
                     downsightWeight -= biggestPossibleWeight;
@@ -82,7 +101,18 @@ public class Downsides {
                 } else if (biggestPossibleWeight == 3) {
                     downsides.add(getRandomDownsideByLevel(1));
                     downsightWeight -= biggestPossibleWeight;
-                } else if (biggestPossibleWeight == 2 || biggestPossibleWeight == 1) {
+                } else if (biggestPossibleWeight < 3) {
+                    downsides.add(getRandomDownsideByLevel(0));
+                    downsightWeight -= biggestPossibleWeight;
+                }
+            } else if (decider == 2) {
+                if (biggestPossibleWeight == 5) {
+                    downsides.add(getRandomDownsideByLevel(2));
+                    downsightWeight -= biggestPossibleWeight;
+                } else if (biggestPossibleWeight == 4) {
+                    downsides.add(getRandomDownsideByLevel(1));
+                    downsightWeight -= biggestPossibleWeight;
+                } else if (biggestPossibleWeight < 4) {
                     downsides.add(getRandomDownsideByLevel(0));
                     downsightWeight -= biggestPossibleWeight;
                 }

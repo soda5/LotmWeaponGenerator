@@ -1,3 +1,4 @@
+import generator.nameGenerator;
 import model.Weapon;
 
 public class Run {
@@ -10,5 +11,7 @@ public class Run {
 
         Weapon weapon3 = new Weapon("Suicide Gown", 6);
         System.out.println(weapon3);
+
+        nameGenerator.initNames();
     }
 }

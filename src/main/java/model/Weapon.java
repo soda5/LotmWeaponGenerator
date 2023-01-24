@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Weapon {
     public String name;
@@ -17,10 +18,11 @@ public class Weapon {
         this.name = name;
         this.sequence = sequence;
         Random random = new Random();
-        downsideWeight = (2 * sequence) -1  + random.nextInt(3);
+        downsideWeight = (sequence / 2) + sequence -1 + random.nextInt(3);
         downsideWeight = downsideWeight < 0 ? 0 : downsideWeight;
         Downsides.createDownsides();
         downsides = Downsides.decideDownsides(downsideWeight);
+        downsides = downsides.stream().distinct().collect(Collectors.toList());
     }
 
     public String toString() {
@@ -28,7 +30,12 @@ public class Weapon {
         finalText += name + "\n";
         finalText += "Sequenz: " + sequence + "\n";
         finalText += "Beschreibung: " + beschreibung + "\n";
-        finalText += "Downsides: " + downsides;
+        finalText += "Downsides: \n";
+
+        for (int i = 0; i < downsides.size(); i++) {
+            finalText += downsides.get(i);
+        }
+
         return finalText;
     }
 }
