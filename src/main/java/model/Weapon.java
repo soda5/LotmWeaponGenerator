@@ -10,6 +10,7 @@ public class Weapon {
     public int sequence;
     public String beschreibung = "Eine tödliche Waffe, fragt sich nur für wen?";
     public float hitChance = 0.2f;
+    public int baseDamage;
     public List<Dice> damageDices = new ArrayList<>();
     private int downsideWeight;
     private List<Downside> downsides;

@@ -13,13 +13,17 @@ public class Downsides {
 
     public static void createDownsides() {
         /*Trivial:*/
-        Downside downsideTrivialOne = new Downside(0, "Du hast ein verstärktes Durstgefühl.", null);
+        Downside downsideTrivialOne = new Downside(0, "Du hast ein verstärktes Durstgefühl.", "Du musst öfter pinkeln.");
         downsidesTrivial.add(downsideTrivialOne);
-        Downside downsideTrivialTwo = new Downside(0, "Du denkst jede Person des anderen Geschlechtes ist an dir interessiert.", null);
+        Downside downsideTrivialTwo = new Downside(0, "Du denkst jede Person des anderen Geschlechtes ist an dir interessiert.",
+                "Du missinterpretierst oft gesellschaftliche Situationen.");
         downsidesTrivial.add(downsideTrivialTwo);
         Downside downsideTrivialThree = new Downside(0, "Dein Gesicht sieht lächerlich aus.",
                 "NPCs müssen sich zusammenreißen um dich nicht auszulachen.");
         downsidesTrivial.add(downsideTrivialThree);
+        Downside downsideTrivialFour = new Downside(0, "Deine Haut wird grünlich.",
+                "Charm -1, NPCs reagieren seltsam auf dich.");
+        downsidesTrivial.add(downsideTrivialFour);
 
         /*Leicht:*/
         Downside downsideEasyOne = new Downside(1, "Du fühlst dich als hättest du Stundenland einem langweiligen" +
@@ -41,7 +45,7 @@ public class Downsides {
 
         /*Mittel:*/
         Downside downsideMiddleOne = new Downside(2, "Du kannst weder riechen noch schmecken noch hören.",
-                "-10 Wahrnehmung und Probleme wenn du deine Sinne nutzen willst.");
+                "-10 Wahrnehmung, Probleme wenn du deine Sinne nutzen willst.");
         downsidesMiddle.add(downsideMiddleOne);
         Downside downsideMiddleTwo = new Downside(2, "Du fängst an extrem nach Verwesung zu stinken.",
                 "-10 Charm, -10 Überzeugen, +5 Einschüchtern.");
@@ -51,6 +55,9 @@ public class Downsides {
         Downside downsideHardOne = new Downside(3, "Dein Körper wird alt und gebrechlich, so wird kämpfen schwer.",
                 "Deine Max HP reduzieren sich auf 50%.");
         downsidesHard.add(downsideHardOne);
+        Downside downsideHardTwo = new Downside(3, "Das Item scheint vampirischen Ursprunges zu sein, es suagt dein Blut.",
+                "-6 HP pro Runde im Gefecht oder -3 HP pro Stunde außerhalb des Gefechtes.");
+        downsidesHard.add(downsideHardTwo);
 
         /*Catastrophe:*/
         Downside downsideCatastropheOne = new Downside(4, "Bei jeder Benutzung verkaufst du ein Stück deiner Seele.",
