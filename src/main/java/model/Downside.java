@@ -27,7 +27,7 @@ public class Downside {
                 severityText = "Schwer";
                 break;
             case 4:
-                severityText = "Catastrophal";
+                severityText = "Katastrophal";
                 break;
             default:
                 System.out.println("Severity Level existiert nicht");

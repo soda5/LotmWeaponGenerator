@@ -73,7 +73,7 @@ public class Downsides {
         Random random = new Random();
 
         if (downsightWeight == 0) {
-            downsides.add(new Downside(0, "Dieses Item hat glücklicherweise keine Downsides.", "Keine."));
+            downsides.add(new Downside(0, "Dieses Item hat glücklicherweise keine Nachteile.", "Keine."));
             return downsides;
         }
 
