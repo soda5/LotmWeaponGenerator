@@ -1,18 +1,15 @@
-import generator.nameGenerator;
-import helper.values;
-import model.Weapon;
+import model.Melee;
+import model.Ranged;
 
 public class Run {
     public static void main(String[] args) {
-        Weapon weapon = new Weapon("Death Helper", 3);
+        Ranged weapon = new Ranged("Death Helper", 3);
         System.out.println(weapon);
 
-        Weapon weapon2 = new Weapon("Red Gloves", 2);
+        Melee weapon2 = new Melee("Red Gloves", 2);
         System.out.println(weapon2);
 
-        Weapon weapon3 = new Weapon("Suicide Gown", 6);
+        Ranged weapon3 = new Ranged("Suicide Gown", 6);
         System.out.println(weapon3);
-
-        nameGenerator.initNames();
     }
 }

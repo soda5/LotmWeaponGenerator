@@ -4,9 +4,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class Weapon {
+public abstract class Weapon {
     public String name;
     public int sequence;
+    public boolean isRanged;
     public String beschreibung = "Eine tödliche Waffe, fragt sich nur für wen?";
     public float hitChance = 0.2f;
     public int baseDamage;
@@ -24,6 +25,9 @@ public class Weapon {
         downsides = Downsides.decideDownsides(downsideWeight);
         downsides = downsides.stream().distinct().collect(Collectors.toList());
         setDamage(sequence);
+    }
+
+    public Weapon() {
     }
 
     private void setDamage(int sequence) {
@@ -77,7 +81,7 @@ public class Weapon {
     public String toString() {
         String finalText = "";
         finalText += name + "\n";
-        finalText += "Sequenz: " + sequence + "\n";
+        finalText += "Sequenz: " + sequence + (isRanged == false ? " Fernkampfwaffe" : " Nahkampfwaffe") + "\n";
         finalText += "Beschreibung: " + beschreibung + "\n";
         finalText += "Schaden: " + baseDamage + " + " + numberDamageD6 + "D6" + "\n";
         finalText += "Downsides: \n";
