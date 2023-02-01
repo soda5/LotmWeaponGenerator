@@ -1,5 +1,8 @@
 package model;
 
+import com.poiji.bind.Poiji;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,6 +15,11 @@ public class Downsides {
     private static List<Downside> downsidesCatastrophe = new ArrayList<>();
 
     public static void createDownsides() {
+
+        File file = new File("H:/dev/LotmWeaponGenerator/src/main/resources/DownsidesTrivial.xlsx");
+        List<Downside> ecxelList = Poiji.fromExcel(file, Downside.class);
+        System.out.println(ecxelList);
+
         /*Trivial:*/
         Downside downsideTrivialOne = new Downside(0, "Du hast ein verstärktes Durstgefühl.", "Du musst öfter pinkeln.");
         downsidesTrivial.add(downsideTrivialOne);

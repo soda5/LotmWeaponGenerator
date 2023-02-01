@@ -1,10 +1,18 @@
 package model;
 
+import com.poiji.annotation.ExcelCellName;
+
 public class Downside {
+    @ExcelCellName("Schweregrad")
     public int severity;
-    public String severityText;
+    @ExcelCellName("Beschreibung")
     public String description;
+    @ExcelCellName("Nachteil")
     public String debuff = "keine";
+
+    private String severityText;
+
+    public Downside() {};
 
     public Downside(int severity, String description, String debuff) {
         this.severity = severity;
