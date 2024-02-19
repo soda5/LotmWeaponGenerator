@@ -5,45 +5,47 @@ import com.poiji.annotation.ExcelCellName;
 public class Downside {
     @ExcelCellName("Schweregrad")
     public int severity;
+    @ExcelCellName("Titel")
+    public String title;
     @ExcelCellName("Beschreibung")
     public String description;
     @ExcelCellName("Nachteil")
     public String debuff = "keine";
 
-    private String severityText;
-
     public Downside() {};
 
-    public Downside(int severity, String description, String debuff) {
+    public Downside(int severity, String title, String description, String debuff) {
         this.severity = severity;
+        this.title = title;
         this.description = description;
         if (debuff != null) {
             this.debuff = debuff;
         }
+    }
 
+    public String toString() {
+        String severityText = "";
         switch(severity){
             case 0:
-                severityText = "Trivial";
+                severityText = String.valueOf(Severity.TRIVIAL);
                 break;
             case 1:
-                severityText = "Leicht";
+                severityText = String.valueOf(Severity.LEICHT);
                 break;
             case 2:
-                severityText = "Mittel";
+                severityText = String.valueOf(Severity.MITTEL);
                 break;
             case 3:
-                severityText = "Schwer";
+                severityText = String.valueOf(Severity.SCHWER);
                 break;
             case 4:
-                severityText = "Katastrophal";
+                severityText = String.valueOf(Severity.KATASTROPHAL);
                 break;
             default:
                 System.out.println("Severity Level existiert nicht");
                 break;
         }
-    }
 
-    public String toString() {
         String finalText = "";
         finalText += "Stufe: " + severityText + "\n";
         finalText += "Beschreibung: " + description + "\n";
